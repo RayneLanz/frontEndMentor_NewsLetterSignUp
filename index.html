@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="Container" id="Container">
+    <div class="Left">
+      <div class="leftContent">
+        <h1>Stay Updated!</h1>
+
+        <p>Join 60,000+ product managers receiving monthly updates on:</p>
+        <ul>
+          <li><img src="./assets/images/icon-success.svg" alt="aa"><p>Product Discovery and Building what matters</p></li>
+          <li><img src="./assets/images/icon-success.svg" alt="aa"><p>Measuring to ensure updates are a success</p></li>
+          <li><img src="./assets/images/icon-success.svg" alt="aa"><p>And much more</p></li>
+        </ul>
+
+        <form >
+          <div class="errorMessage">
+            <label for="femail">Email</label>
+            <label class="errorMessage" id="errorMessage"></label>
+          </div>
+          <input type="email" id="femail" name="femail" required placeholder="email@company.com">
+          <button onclick=check()>Subscribe to monthly newsletter</button>
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="Right">
+
+      <div class="rightContent">
+
+      </div>
+
+    </div>
+
+    
+
+  </div>
+
+  <div class="divsucess" id="divsucess">
+
+    <div class="success" id="success">
+
+      <img src="./assets/images/icon-success.svg" alt="a">
+      <h1>Thanks for Subscribing</h1>
+      <p id="ConfirmEmail"></p>
+
+      <button onclick=returnMain()>Dismiss Message</button>
+      
+
+    </div>
+      
+  </div>
+
+  <script>
+    function check(){
+      event.preventDefault();
+
+      field = document.getElementById("femail");
+      error = document.getElementById("errorMessage");
+      text = document.getElementById("ConfirmEmail");
+      email = document.getElementById("femail").value
+      
+      if (!field.checkValidity()) {
+      valid = false;
+      error.innerHTML = "Valid Email Required";
+
+      }else {
+      
+      field.classList.remove("err");
+      error.innerHTML = "";
+      document.getElementById("Container").style.display = "none";
+      document.getElementById("divsucess").style.display = "flex";
+      text.innerHTML = `A confirmation email has been sent to ${email}. Please open it and click the button inside to confirm your subscription.`
+
+
+      }
+    }
+
+    function returnMain(){
+      document.getElementById("divsucess").style.display = "none";
+      document.getElementById("Container").style.display = "flex";
+    }
+    
+    
+
+  </script>
+
+</body>
+</html>
